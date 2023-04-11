@@ -17,6 +17,5 @@ class SplashScreenActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Close the SplashScreenActivity so the user can't go back to it
         }, 3000) // Wait for 3 seconds
-
     }
 }
