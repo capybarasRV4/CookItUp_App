@@ -9,8 +9,12 @@ class Recipe(
     val complexity: String, //this can be ENUM
     val description: String,
     val ingredients: MutableList<String>,
-) {
+):Comparable<Recipe> {
     var id: String = UUID.randomUUID().toString().replace("-", "") //random object id
+
+    override fun compareTo(other: Recipe): Int {
+        return name.compareTo(other.name)
+    }
 
     fun printDesc(): String{
         val lines = description.split("\n")
@@ -19,6 +23,10 @@ class Recipe(
             result += "Step ${index + 1}\n$line\n\n"
         }
         return result
+    }
+
+    override fun toString(): String {
+        return "$id $name $type $time $complexity $description $ingredients"
     }
 
     /*  printDesc() function
