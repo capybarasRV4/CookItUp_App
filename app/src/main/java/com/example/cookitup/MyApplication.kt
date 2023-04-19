@@ -63,19 +63,20 @@ class MyApplication: Application() {
         } catch (e: IOException) {
             RecipeList("Recepti:")
         }
-
         /*
+        //data.recipes.clear()
         val test = mutableListOf<String>()
         test.add("jajce")
 
         if (data.size() < 100) {
             for (i in 1..100) {
                 data.add(
-                    Recipe(faker.name.name(), faker.food.fruits(), faker.idNumber.hashCode(), faker.food.spices(), faker.food.descriptions(), test)
+                    Recipe("title $i", "breakfast", 60, "hard", faker.food.descriptions(), test)
                 )
                 saveToFile()
             }
         }
          */
+
     }
 }
