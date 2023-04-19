@@ -22,4 +22,13 @@ class RecipeList(var name: String) {
         }
         return recepti
     }
+
+    fun findRecipeById(id: String): Recipe? {
+        for(recipe in recipes){
+            if(recipe.id==id){
+                return recipe
+            }
+        }
+        return null
+    }
 }
