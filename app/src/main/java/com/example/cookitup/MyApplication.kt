@@ -22,6 +22,22 @@ class MyApplication: Application() {
     lateinit var sharedPref: SharedPreferences
     val faker = Faker()
 
+    var PREFERENCES: String = "preferences"
+
+    var CUSTOM_THEME: String = "customTheme"
+    var LIGHT_MODE: String = "lightTheme"
+    var DARK_MODE: String = "darkTheme"
+
+    private lateinit var customTheme: String
+
+    fun getCustomTheme(): String {
+        return customTheme
+    }
+
+    fun setCustomTheme(customTheme: String) {
+        this.customTheme = customTheme
+    }
+
     override fun onCreate() {
         super.onCreate()
         gson = Gson()

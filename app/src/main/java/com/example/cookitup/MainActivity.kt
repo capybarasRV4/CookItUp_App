@@ -26,5 +26,13 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("SELECTED_ID", "123") //potem bomo poslali id poslanega recepta, ki bo izbran (recepti bodo shranjeni v MyApplication)
             startActivity(intent)
         }
+        binding.allRecipesIcon.setOnClickListener {
+            val intent = Intent(this, AllRecipesActivity::class.java)
+            startActivity(intent)
+        }
+        binding.imageButton3.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
