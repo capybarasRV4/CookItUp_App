@@ -36,7 +36,7 @@ class RecipeAdapter(private val data:RecipeList) : RecyclerView.Adapter<RecipeAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipes = data.recipes[position]
 
-        Picasso.get().load("https://icons.iconarchive.com/icons/iconarchive/fat-sugar-food/256/Pizza-icon.png").into(holder.imageView);
+        Picasso.get().load("https://icons.iconarchive.com/icons/iconarchive/fat-sugar-food/256/Pizza-icon.png").into(holder.imageView)
 
         holder.name.text = recipes.name
         holder.type.text = recipes.type
