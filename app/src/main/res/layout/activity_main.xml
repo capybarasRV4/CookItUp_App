@@ -60,9 +60,9 @@
 
     <ImageButton
         android:id="@+id/btn_settings"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="80dp"
         android:background="@color/white"
         android:scaleType="fitEnd"
         android:src="@drawable/setting"
@@ -73,14 +73,14 @@
 
     <ImageButton
         android:id="@+id/allRecipesIcon"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:scaleType="fitEnd"
         android:src="@drawable/all_recipes"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintEnd_toStartOf="@+id/btn_settings"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -146,8 +146,8 @@
 
     <ImageButton
         android:id="@+id/btn_profile"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:scaleType="fitEnd"
         android:src="@drawable/profile_icon"
@@ -161,7 +161,7 @@
     <ImageButton
         android:id="@+id/btn_home"
         android:layout_width="51dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:scaleType="fitEnd"

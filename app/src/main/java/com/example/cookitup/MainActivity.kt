@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AllRecipesActivity::class.java)
             startActivity(intent)
         }
-        binding.imageButton3.setOnClickListener {
+        binding.btnSettings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
