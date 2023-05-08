@@ -3,14 +3,15 @@ package com.example.cookitup
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.data.Recipe
 import com.example.data.RecipeList
 import com.google.gson.Gson
-import java.io.File
 import io.github.serpro69.kfaker.Faker
 import org.apache.commons.io.FileUtils
+import java.io.File
 import java.io.IOException
-import java.util.*
+import java.util.UUID
 
 const val MY_FILE_NAME = "mydata.json"
 const val MY_SP_FILE_NAME = "myshared.data"
@@ -22,6 +23,22 @@ class MyApplication: Application() {
     lateinit var sharedPref: SharedPreferences
     val faker = Faker()
 
+    val PREFERENCES = "preferences"
+
+    val CUSTOM_THEME = "customTheme"
+    val LIGHT_THEME = "lightTheme"
+    val DARK_THEME = "darkTheme"
+
+    private var customTheme: String? = null
+
+    fun getCustomTheme(): String? {
+        return customTheme
+    }
+
+    fun setCustomTheme(customTheme: String?) {
+        this.customTheme = customTheme
+    }
+
     override fun onCreate() {
         super.onCreate()
         gson = Gson()
@@ -31,9 +48,22 @@ class MyApplication: Application() {
         if (!containsID()) {
             saveID(UUID.randomUUID().toString().replace("-", ""))
         }
+        checkTheme()
     }
     fun initShared() {
         sharedPref = getSharedPreferences( MY_SP_FILE_NAME, Context.MODE_PRIVATE)
+    }
+
+    fun checkTheme() {
+        sharedPref = getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
+        val theme = sharedPref.getString(CUSTOM_THEME, LIGHT_THEME)
+        if (theme.equals(DARK_THEME)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            setTheme(R.style.DarkTheme)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            setTheme(R.style.AppTheme)
+        }
     }
 
     fun saveID(id:String) {
@@ -63,7 +93,7 @@ class MyApplication: Application() {
         } catch (e: IOException) {
             RecipeList("Recepti:")
         }
-        /*
+
         //data.recipes.clear()
         val test = mutableListOf<String>()
         test.add("jajce")
@@ -76,7 +106,6 @@ class MyApplication: Application() {
                 saveToFile()
             }
         }
-         */
 
     }
 }

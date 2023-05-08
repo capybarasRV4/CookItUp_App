@@ -6,113 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <TextView
-        android:id="@+id/notification_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:text="Notifications"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/darker"
+
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/notification_switch"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/homes_icon" />
 
     <TextView
-        android:id="@+id/setting_title"
+        android:id="@+id/LightDarkModeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:text="Settings"
-        android:textColor="@color/darker"
-        android:textSize="30dp"
-        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:text="Light"
+        android:textAllCaps="true"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/language_set"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/modeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:text="Language"
-        android:textColor="@color/darker"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/mode_set"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setting_title"
-        app:layout_constraintVertical_bias="0.549" />
-
-    <TextView
-        android:id="@+id/mode_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="Night mode"
-        android:textColor="@color/darker"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/loc_set"
-        app:layout_constraintEnd_toStartOf="@+id/mode_switch"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/loc_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="48dp"
-        android:text="Enable location"
-        android:textColor="@color/darker"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/notification_set"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Switch
-        android:id="@+id/mode_switch"
-        android:layout_width="64dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/loc_switch"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Switch
-        android:id="@+id/loc_switch"
-        android:layout_width="64dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/notification_switch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@+id/loc_set" />
-
-    <Switch
-        android:id="@+id/notification_switch"
-        android:layout_width="64dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="232dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="78dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toTopOf="@+id/setting_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:layout_constraintTop_toBottomOf="@+id/LightDarkModeText" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

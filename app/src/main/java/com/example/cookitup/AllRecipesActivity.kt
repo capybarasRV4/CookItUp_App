@@ -57,6 +57,8 @@ class AllRecipesActivity : AppCompatActivity() {
         binding.recipes.adapter = adapter
         //adapter.notifyDataSetChanged();
 
-        //TODO ~ add buttons
+        binding.imageButton5.setOnClickListener {
+            finish()
+        }
     }
 }

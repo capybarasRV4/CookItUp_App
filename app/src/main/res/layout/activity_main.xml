@@ -71,6 +71,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.484" />
 
+    <ImageButton
+        android:id="@+id/allRecipesIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:scaleType="fitEnd"
+        android:src="@drawable/all_recipes"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/title_main"
         android:layout_width="221dp"
