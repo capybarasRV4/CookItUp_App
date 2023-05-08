@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="French Toast"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/dish_type"
         app:layout_constraintEnd_toStartOf="@+id/dish_img"
         app:layout_constraintHorizontal_bias="0.082"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:text="Recommended"
         android:textColor="@color/darker"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +162,7 @@
         android:id="@+id/btn_home"
         android:layout_width="51dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/white"
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -196,5 +196,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_search"
         app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="78dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
