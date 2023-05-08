@@ -16,6 +16,6 @@ class SplashScreenActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish() // Close the SplashScreenActivity so the user can't go back to it
-        }, 3000) // Wait for 3 seconds
+        }, 2000) // Wait for 3 seconds
     }
 }
