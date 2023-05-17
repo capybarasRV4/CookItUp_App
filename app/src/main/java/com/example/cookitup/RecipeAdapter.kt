@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.data.RecipeList
+import com.example.data.Recipe
 import com.squareup.picasso.Picasso
 
-class RecipeAdapter(private val data:RecipeList) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+class RecipeAdapter(var recipes:MutableList<Recipe>) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
     lateinit var onClickObject:MyOnClick
 
     interface MyOnClick {
@@ -34,7 +34,7 @@ class RecipeAdapter(private val data:RecipeList) : RecyclerView.Adapter<RecipeAd
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val recipes = data.recipes[position]
+        val recipes = recipes[position]
 
         Picasso.get().load("https://icons.iconarchive.com/icons/iconarchive/fat-sugar-food/256/Pizza-icon.png").into(holder.imageView)
 
@@ -52,6 +52,6 @@ class RecipeAdapter(private val data:RecipeList) : RecyclerView.Adapter<RecipeAd
         }
     }
     override fun getItemCount(): Int {
-        return data.size()
+        return recipes.size
     }
 }

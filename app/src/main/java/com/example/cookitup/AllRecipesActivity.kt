@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cookitup.databinding.ActivityAllRecipesBinding
+import com.example.data.Recipe
 
 class AllRecipesActivity : AppCompatActivity() {
     lateinit var app: MyApplication
@@ -19,14 +20,31 @@ class AllRecipesActivity : AppCompatActivity() {
         binding = ActivityAllRecipesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.recipes.layoutManager = LinearLayoutManager(this)
-        val adapter = RecipeAdapter(app.data)
+
+        val adapter = RecipeAdapter(app.data.recipes)
+
+        //if entered from SearchActivity
+        if(intent.hasExtra("SEARCH_QUERY")){
+            val searchQuery = intent.getStringExtra("SEARCH_QUERY")
+            val allRecipes = adapter.recipes
+            var recipes = mutableListOf<Recipe>()
+            for(recipe in allRecipes){
+                if(recipe.name.contains(searchQuery!!)){
+                    recipes.add(recipe)
+                }
+            }
+            adapter.recipes=recipes
+        }
 
         val editData = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             adapter.notifyDataSetChanged()
         }
         adapter.onClickObject = object:RecipeAdapter.MyOnClick {
             override fun onClick(p0: View?, position:Int) {
-                //TODO ~ need AddActivity
+                var selected = app.data.recipes[position]
+                val intent = Intent(this@AllRecipesActivity, OneRecipeActivity::class.java)
+                intent.putExtra("SELECTED_ID", selected.id)
+                startActivity(intent)
             }
 
             override fun onLongClick(p0: View?, position: Int) {
@@ -57,8 +75,20 @@ class AllRecipesActivity : AppCompatActivity() {
         binding.recipes.adapter = adapter
         //adapter.notifyDataSetChanged();
 
-        binding.imageButton5.setOnClickListener {
-            finish()
+        //navigation buttons on clicks:
+        binding.btnHome.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSearch.setOnClickListener{
+            val intent = Intent(this, SearchRecipeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTimer.setOnClickListener{
+            val intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
         }
     }
 }

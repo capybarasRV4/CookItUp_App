@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.example.cookitup.databinding.ActivityMainBinding
 import com.example.cookitup.databinding.ActivityOneRecipeBinding
 
 class OneRecipeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOneRecipeBinding
     lateinit var app: MyApplication
+    lateinit var adapter: IngredientAdapter
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +24,14 @@ class OneRecipeActivity : AppCompatActivity() {
         if (intent.hasExtra("SELECTED_ID")) {
             val id = intent.getStringExtra("SELECTED_ID")
             if (id != null) {
-                //val recipe = app.data.findRecipeById(id)
-                val recipe = app.data.recipes[0]
+                val recipe = app.data.findRecipeById(id)
                 if (recipe != null) {
                     binding.recipeTitle.text = recipe.name
-                    binding.recipeType.text = recipe.type
-                    binding.recipeComplexity.text = recipe.complexity
                     binding.recipeTime.text = recipe.time.toString() + " min"
                     binding.recipeDescription.text = recipe.description
+
+                    adapter = IngredientAdapter(recipe.ingredients, this)
+                    binding.recyclerview.adapter = adapter
                 } else {
                     Log.d("OneRecipe", "Recipe with this ID doesn't exist!")
                     finish()

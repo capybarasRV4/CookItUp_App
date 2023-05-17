@@ -5,4 +5,11 @@
     <string name="default_value_RecipeTime">RecipeTime</string>
     <string name="default_value_RecipeComplexity">RecipeComplexity</string>
     <string name="default_value_RecipeDescription">RecipeDescription</string>
+    <string name="defaultIngredientValue">Ingredient</string>
+    <string name="constIngredients">Ingredients:</string>
+    <string name="constDescription">How to prepare:</string>
+    <string name="constTime">Time to prepare:</string>
+    <string name="defaultDishPrepTime">15 min</string>
+    <string name="searchQuery_hint">pica</string>
+    <string name="constSearchQuery">Search query:</string>
 </resources>
