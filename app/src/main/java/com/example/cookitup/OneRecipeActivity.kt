@@ -27,7 +27,7 @@ class OneRecipeActivity : AppCompatActivity() {
                 val recipe = app.data.findRecipeById(id)
                 if (recipe != null) {
                     binding.recipeTitle.text = recipe.name
-                    binding.recipeTime.text = recipe.time.toString() + " min"
+                    binding.recipeTime.text = recipe.time
                     binding.recipeDescription.text = recipe.description
 
                     adapter = IngredientAdapter(recipe.ingredients, this)
