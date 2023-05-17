@@ -74,6 +74,10 @@ class TimerActivity : AppCompatActivity() {
         }
 
         mButtonReset?.setOnClickListener { resetTimer() }
+
+        binding.imageButton5.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setTime(milliseconds: Long) {
