@@ -95,6 +95,7 @@ class MyApplication: Application() {
         }
 
         data.recipes.clear()
+        /*
         val test = mutableListOf<String>()
         test.add("jajce")
         test.add("jajce1")
@@ -122,6 +123,8 @@ class MyApplication: Application() {
                 saveToFile()
             }
         }
+
+         */
 
     }
 }
