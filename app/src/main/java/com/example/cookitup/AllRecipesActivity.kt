@@ -46,7 +46,7 @@ class AllRecipesActivity : AppCompatActivity() {
                 intent.putExtra("SELECTED_ID", selected.id)
                 startActivity(intent)
             }
-
+            /*
             override fun onLongClick(p0: View?, position: Int) {
                 val builder = AlertDialog.Builder(this@AllRecipesActivity) //access context from inner class
                 //set title for alert dialog
@@ -71,6 +71,7 @@ class AllRecipesActivity : AppCompatActivity() {
                 alertDialog.show()
 
             }
+             */
         }
         binding.recipes.adapter = adapter
         //adapter.notifyDataSetChanged();

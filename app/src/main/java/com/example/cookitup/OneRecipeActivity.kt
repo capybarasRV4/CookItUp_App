@@ -44,5 +44,8 @@ class OneRecipeActivity : AppCompatActivity() {
             Log.d("OneRecipe", "Error getting SELECTED_ID!")
             finish()
         }
+        binding.imageButton5.setOnClickListener {
+            finish()
+        }
     }
 }
