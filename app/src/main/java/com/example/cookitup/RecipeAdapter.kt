@@ -37,7 +37,7 @@ class RecipeAdapter(var recipes:MutableList<Recipe>) : RecyclerView.Adapter<Reci
         Picasso.get().load("https://icons.iconarchive.com/icons/iconarchive/fat-sugar-food/256/Pizza-icon.png").into(holder.imageView)
 
         holder.name.text = recipes.name
-        holder.prep.text = recipes.time.toString() + " min"
+        holder.prep.text = "Cas priprave: " + recipes.time
 
         holder.line.setOnClickListener { p0 ->
             onClickObject.onClick(p0, holder.bindingAdapterPosition) //Action from Activity

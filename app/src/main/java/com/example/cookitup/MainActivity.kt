@@ -46,13 +46,13 @@ class MainActivity : AppCompatActivity() {
 
         //setting values of 3 recipes:
         binding.dishName1.text = recipe1.name
-        binding.dishPrepTime1.text = recipe1.time.toString() + " min"
+        binding.dishPrepTime1.text = "Cas priprave: " + recipe1.time
 
         binding.dishName2.text = recipe2.name
-        binding.dishPrepTime2.text = recipe2.time.toString() + " min"
+        binding.dishPrepTime2.text = "Cas priprave: " + recipe2.time
 
         binding.dishName3.text = recipe3.name
-        binding.dishPrepTime3.text = recipe3.time.toString() + " min"
+        binding.dishPrepTime3.text = "Cas priprave: " + recipe3.time
 
         //on clicks for recipes:
         binding.recipeBox1.setOnClickListener {
