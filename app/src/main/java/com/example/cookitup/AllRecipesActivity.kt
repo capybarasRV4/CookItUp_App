@@ -3,7 +3,6 @@ package com.example.cookitup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,13 +21,19 @@ class AllRecipesActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.recipes.layoutManager = LinearLayoutManager(this)
 
-        val adapter = RecipeAdapter(app.data)
+        val adapter = RecipeAdapter(app.data.recipes)
 
         //if entered from SearchActivity
         if(intent.hasExtra("SEARCH_QUERY")){
             val searchQuery = intent.getStringExtra("SEARCH_QUERY")
-            val filteredRecipeList = adapter.data.filterByName(searchQuery!!)
-            adapter.data.recipes= filteredRecipeList as MutableList<Recipe>
+            val allRecipes = adapter.recipes
+            var recipes = mutableListOf<Recipe>()
+            for(recipe in allRecipes){
+                if(recipe.name.contains(searchQuery!!)){
+                    recipes.add(recipe)
+                }
+            }
+            adapter.recipes=recipes
         }
 
         val editData = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
