@@ -24,8 +24,7 @@ class OneRecipeActivity : AppCompatActivity() {
         if (intent.hasExtra("SELECTED_ID")) {
             val id = intent.getStringExtra("SELECTED_ID")
             if (id != null) {
-                //val recipe = app.data.findRecipeById(id)
-                val recipe = app.data.recipes[0]
+                val recipe = app.data.findRecipeById(id)
                 if (recipe != null) {
                     binding.recipeTitle.text = recipe.name
                     binding.recipeTime.text = recipe.time.toString() + " min"

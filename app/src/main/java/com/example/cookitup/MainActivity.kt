@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding.recipeBox.setOnClickListener{
             Log.d("OnClick", "Button clicked!")
             val intent = Intent(this@MainActivity, OneRecipeActivity::class.java)
-            intent.putExtra("SELECTED_ID", "123") //potem bomo poslali id poslanega recepta, ki bo izbran (recepti bodo shranjeni v MyApplication)
+            intent.putExtra("SELECTED_ID", app.data.recipes[0].id)
             startActivity(intent)
         }
         binding.allRecipesIcon.setOnClickListener {

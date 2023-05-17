@@ -3,6 +3,7 @@ package com.example.cookitup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,7 +27,10 @@ class AllRecipesActivity : AppCompatActivity() {
         }
         adapter.onClickObject = object:RecipeAdapter.MyOnClick {
             override fun onClick(p0: View?, position:Int) {
-                //TODO ~ need AddActivity
+                var selected = app.data.recipes[position]
+                val intent = Intent(this@AllRecipesActivity, OneRecipeActivity::class.java)
+                intent.putExtra("SELECTED_ID", selected.id)
+                startActivity(intent)
             }
 
             override fun onLongClick(p0: View?, position: Int) {
