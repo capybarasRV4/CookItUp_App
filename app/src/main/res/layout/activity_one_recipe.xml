@@ -20,6 +20,7 @@
             android:text="@string/default_value_RecipeTitle"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/darker"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/constTime"
             android:textStyle="bold"
+            android:textColor="@color/darker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recipeTitle" />
 
@@ -52,6 +54,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/constIngredients"
             android:textStyle="bold"
+            android:textColor="@color/darker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recipeTime" />
 

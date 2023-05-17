@@ -31,4 +31,8 @@ class RecipeList(var name: String) {
         }
         return null
     }
+
+    fun filterByName(searchQuery: String): List<Recipe> {
+        return recipes.filter { it.name.contains(searchQuery) }
+    }
 }

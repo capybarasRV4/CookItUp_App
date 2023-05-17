@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cookitup.databinding.ActivityMainBinding
+import java.sql.Time
 
 
 class MainActivity : AppCompatActivity() {
@@ -75,13 +76,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //other on clicks:
+        //navigation buttons on clicks:
         binding.allRecipesIcon.setOnClickListener {
             val intent = Intent(this, AllRecipesActivity::class.java)
             startActivity(intent)
         }
         binding.btnSettings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSearch.setOnClickListener{
+            val intent = Intent(this, SearchRecipeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTimer.setOnClickListener{
+            val intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
         }
     }

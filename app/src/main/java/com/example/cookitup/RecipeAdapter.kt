@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.data.RecipeList
 import com.squareup.picasso.Picasso
 
-class RecipeAdapter(private val data:RecipeList) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+class RecipeAdapter(var data:RecipeList) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
     lateinit var onClickObject:MyOnClick
 
     interface MyOnClick {

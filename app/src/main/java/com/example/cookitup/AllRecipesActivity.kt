@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cookitup.databinding.ActivityAllRecipesBinding
+import com.example.data.Recipe
 
 class AllRecipesActivity : AppCompatActivity() {
     lateinit var app: MyApplication
@@ -20,7 +21,15 @@ class AllRecipesActivity : AppCompatActivity() {
         binding = ActivityAllRecipesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.recipes.layoutManager = LinearLayoutManager(this)
+
         val adapter = RecipeAdapter(app.data)
+
+        //if entered from SearchActivity
+        if(intent.hasExtra("SEARCH_QUERY")){
+            val searchQuery = intent.getStringExtra("SEARCH_QUERY")
+            val filteredRecipeList = adapter.data.filterByName(searchQuery!!)
+            adapter.data.recipes= filteredRecipeList as MutableList<Recipe>
+        }
 
         val editData = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             adapter.notifyDataSetChanged()
@@ -61,8 +70,20 @@ class AllRecipesActivity : AppCompatActivity() {
         binding.recipes.adapter = adapter
         //adapter.notifyDataSetChanged();
 
-        binding.imageButton5.setOnClickListener {
-            finish()
+        //navigation buttons on clicks:
+        binding.btnHome.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSearch.setOnClickListener{
+            val intent = Intent(this, SearchRecipeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnTimer.setOnClickListener{
+            val intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
         }
     }
 }

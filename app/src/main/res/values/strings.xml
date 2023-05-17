@@ -10,4 +10,6 @@
     <string name="constDescription">How to prepare:</string>
     <string name="constTime">Time to prepare:</string>
     <string name="defaultDishPrepTime">15 min</string>
+    <string name="searchQuery_hint">pica</string>
+    <string name="constSearchQuery">Search query:</string>
 </resources>
