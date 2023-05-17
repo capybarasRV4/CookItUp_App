@@ -3,11 +3,18 @@ package com.example.cookitup
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.cookitup.api.RecipeCallback
 import com.example.data.Recipe
 import com.example.data.RecipeList
 import com.google.gson.Gson
 import io.github.serpro69.kfaker.Faker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.IOException
@@ -28,6 +35,8 @@ class MyApplication: Application() {
     val CUSTOM_THEME = "customTheme"
     val LIGHT_THEME = "lightTheme"
     val DARK_THEME = "darkTheme"
+    val SERVER_URL = "http://192.168.1.5:3000/recipes"
+
 
     private var customTheme: String? = null
 
@@ -43,7 +52,8 @@ class MyApplication: Application() {
         super.onCreate()
         gson = Gson()
         file = File(filesDir, MY_FILE_NAME)
-        initData()
+
+        initDataDB()
         initShared()
         if (!containsID()) {
             saveID(UUID.randomUUID().toString().replace("-", ""))
@@ -87,6 +97,52 @@ class MyApplication: Application() {
         }
     }
 
+    fun initDataDB(){
+        data = RecipeList("Recipes")
+        val recipeCallback = object : RecipeCallback {
+            override fun onRecipesReceived(recipeList: MutableList<Recipe>) {
+                Log.d("Recipe", "Recipe count: ${recipeList.size}")
+                for(r in recipeList){
+                    data.add(Recipe(r.name, r.type, r.time, r.complexity, r.description, r.ingredients))
+                }
+            }
+
+            override fun onFailure(message: String) {
+                // Handle the failure case here
+                Log.e("Recipe", "Failed to retrieve recipes: $message")
+            }
+        }
+
+        getRecipesFromServer(SERVER_URL, recipeCallback)
+    }
+
+    fun getRecipesFromServer(url: String, callback: RecipeCallback) {
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        // Use coroutines to handle the asynchronous request
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val response = client.newCall(request).execute()
+                val responseBody = response.body?.string()
+                val gson = Gson()
+
+                if (response.isSuccessful && responseBody != null) {
+                    val recipeList = gson.fromJson(responseBody, Array<Recipe>::class.java).toMutableList()
+                    // Invoke the callback with the recipeList
+                    callback.onRecipesReceived(recipeList)
+                } else {
+                    callback.onFailure("Request failed")
+                }
+            } catch (e: IOException) {
+                callback.onFailure(e.message ?: "An error occurred")
+            }
+        }
+    }
+
+
     private fun initData() {
         data = try { //www
             gson.fromJson(FileUtils.readFileToString(file), RecipeList::class.java)
@@ -117,7 +173,7 @@ class MyApplication: Application() {
         if (data.size() < 100) {
             for (i in 1..100) {
                 data.add(
-                    Recipe("title $i", "breakfast", 60, "hard", faker.food.descriptions(), test)
+                    Recipe("title $i", "breakfast", "1 ura", "hard", faker.food.descriptions(), test)
                 )
                 saveToFile()
             }

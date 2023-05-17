@@ -5,7 +5,7 @@ import java.util.*
 class Recipe(
     val name: String,
     val type: String,   //this can be ENUM
-    val time: Int,
+    val time: String,
     val complexity: String, //this can be ENUM
     val description: String,
     val ingredients: MutableList<String>,
