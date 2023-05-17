@@ -14,49 +14,157 @@
         app:layout_constraintGuide_begin="68dp" />
 
     <ImageView
-        android:id="@+id/recipe_box"
+        android:id="@+id/recipe_box1"
+        android:layout_width="331dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/recipe_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_main" />
+
+    <ImageView
+        android:id="@+id/dish_img1"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recipe_box1"
+        app:layout_constraintEnd_toEndOf="@+id/recipe_box1"
+        app:layout_constraintTop_toTopOf="@+id/recipe_box1"
+        app:srcCompat="@drawable/dish" />
+
+    <TextView
+        android:id="@+id/dish_name1"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:text="@string/default_value_RecipeTitle"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/dish_img1"
+        app:layout_constraintHeight_max="95dp"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="@+id/recipe_box1"
+        app:layout_constraintTop_toTopOf="@+id/recipe_box1" />
+
+    <ImageView
+        android:id="@+id/sandClockImage1"
+        android:layout_width="15dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@+id/recipe_box1"
+        app:layout_constraintTop_toTopOf="@+id/dishPrepTime1"
+        app:srcCompat="@drawable/sand_clock" />
+
+    <TextView
+        android:id="@+id/dishPrepTime1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/defaultDishPrepTime"
+        app:layout_constraintStart_toEndOf="@+id/sandClockImage1"
+        app:layout_constraintTop_toBottomOf="@+id/dish_name1" />
+
+    <ImageView
+        android:id="@+id/recipe_box2"
         android:layout_width="331dp"
         android:layout_height="131dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/recipe_box"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_main" />
+        app:layout_constraintTop_toBottomOf="@+id/recipe_box1" />
 
     <ImageView
-        android:id="@+id/dish_img"
-        android:layout_width="129dp"
-        android:layout_height="132dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recipe_box"
-        app:layout_constraintEnd_toEndOf="@+id/recipe_box"
-        app:layout_constraintTop_toTopOf="@+id/recipe_box"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/breakfast" />
+        android:id="@+id/dish_img2"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recipe_box2"
+        app:layout_constraintEnd_toEndOf="@+id/recipe_box2"
+        app:layout_constraintTop_toTopOf="@+id/recipe_box2"
+        app:srcCompat="@drawable/dish" />
 
     <TextView
-        android:id="@+id/dish_name"
-        android:layout_width="wrap_content"
+        android:id="@+id/dish_name2"
+        android:layout_width="171dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="French Toast"
+        android:text="@string/default_value_RecipeTitle"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/dish_type"
-        app:layout_constraintEnd_toStartOf="@+id/dish_img"
+        app:layout_constraintEnd_toStartOf="@+id/dish_img2"
+        app:layout_constraintHeight_max="95dp"
         app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="@+id/recipe_box"
-        app:layout_constraintTop_toTopOf="@+id/recipe_box"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintStart_toStartOf="@+id/recipe_box2"
+        app:layout_constraintTop_toTopOf="@+id/recipe_box2" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/sandClockImage2"
         android:layout_width="15dp"
         android:layout_height="19dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/dish_diff"
-        app:layout_constraintStart_toStartOf="@+id/recipe_box"
+        app:layout_constraintStart_toStartOf="@+id/recipe_box2"
+        app:layout_constraintTop_toTopOf="@+id/dishPrepTime2"
         app:srcCompat="@drawable/sand_clock" />
+
+    <TextView
+        android:id="@+id/dishPrepTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/defaultDishPrepTime"
+        app:layout_constraintStart_toEndOf="@+id/sandClockImage2"
+        app:layout_constraintTop_toBottomOf="@+id/dish_name2" />
+
+    <ImageView
+        android:id="@+id/recipe_box3"
+        android:layout_width="331dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/recipe_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_box2" />
+
+    <ImageView
+        android:id="@+id/dish_img3"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recipe_box3"
+        app:layout_constraintEnd_toEndOf="@+id/recipe_box3"
+        app:layout_constraintTop_toTopOf="@+id/recipe_box3"
+        app:srcCompat="@drawable/dish" />
+
+    <TextView
+        android:id="@+id/dish_name3"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:text="@string/default_value_RecipeTitle"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/dish_img3"
+        app:layout_constraintHeight_max="95dp"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="@+id/recipe_box3"
+        app:layout_constraintTop_toTopOf="@+id/recipe_box3" />
+
+    <ImageView
+        android:id="@+id/sandClockImage3"
+        android:layout_width="15dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="@+id/recipe_box3"
+        app:layout_constraintTop_toTopOf="@+id/dishPrepTime3"
+        app:srcCompat="@drawable/sand_clock" />
+
+    <TextView
+        android:id="@+id/dishPrepTime3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/defaultDishPrepTime"
+        app:layout_constraintStart_toEndOf="@+id/sandClockImage3"
+        app:layout_constraintTop_toBottomOf="@+id/dish_name3" />
 
     <ImageButton
         android:id="@+id/btn_settings"
@@ -96,52 +204,6 @@
         app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="23dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/recipe_box"
-        app:srcCompat="@drawable/tableware" />
-
-    <TextView
-        android:id="@+id/dish_diff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Difficulty"
-        app:layout_constraintBottom_toBottomOf="@+id/recipe_box"
-        app:layout_constraintEnd_toStartOf="@+id/dish_img"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="@+id/recipe_box" />
-
-    <TextView
-        android:id="@+id/dish_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="4dp"
-        android:text="Breakfast"
-        app:layout_constraintBottom_toTopOf="@+id/dish_prep"
-        app:layout_constraintEnd_toStartOf="@+id/dish_img"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView5" />
-
-    <TextView
-        android:id="@+id/dish_prep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="116dp"
-        android:layout_marginBottom="16dp"
-        android:text="15 min"
-        app:layout_constraintBottom_toTopOf="@+id/dish_diff"
-        app:layout_constraintEnd_toStartOf="@+id/dish_img"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toEndOf="@+id/imageView4" />
 
     <ImageButton
         android:id="@+id/btn_profile"
