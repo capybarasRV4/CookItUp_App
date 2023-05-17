@@ -94,9 +94,25 @@ class MyApplication: Application() {
             RecipeList("Recepti:")
         }
 
-        //data.recipes.clear()
+        data.recipes.clear()
         val test = mutableListOf<String>()
         test.add("jajce")
+        test.add("jajce1")
+        test.add("jajce2")
+        test.add("jajce3")
+        test.add("jajce4")
+        test.add("jajce5")
+        test.add("jajce6")
+        test.add("jajce7")
+        test.add("jajce")
+        test.add("jajce1")
+        test.add("jajce2")
+        test.add("jajce3")
+        test.add("jajce4")
+        test.add("jajce5")
+        test.add("jajce6")
+        test.add("jajce7")
+
 
         if (data.size() < 100) {
             for (i in 1..100) {
