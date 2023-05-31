@@ -95,5 +95,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
         }
+        binding.btnProfile.setOnClickListener{
+            val intent = Intent(this, ProfileMainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
