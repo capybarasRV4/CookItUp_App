@@ -53,7 +53,8 @@ class MyApplication: Application() {
         gson = Gson()
         file = File(filesDir, MY_FILE_NAME)
 
-        initDataDB()
+        //initDataDB()
+        initData()
         initShared()
         if (!containsID()) {
             saveID(UUID.randomUUID().toString().replace("-", ""))

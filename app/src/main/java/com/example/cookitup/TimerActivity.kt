@@ -11,7 +11,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cookitup.databinding.ActivityTimerBinding
 import java.util.Locale
-
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.os.Build
+import androidx.core.app.NotificationCompat
 
 class TimerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTimerBinding
@@ -31,6 +38,21 @@ class TimerActivity : AppCompatActivity() {
     private var mTimeLeftInMillis: Long = 0
     private var mEndTime: Long = 0
 
+    companion object {
+        private const val CHANNEL_ID = "timer_channel"
+        private const val CHANNEL_NAME = "Timer Channel"
+        private const val NOTIFICATION_ID = 1
+        const val ACTION_TIMER_FINISHED = "com.example.cookitup.ACTION_TIMER_FINISHED"
+    }
+
+    private val timerReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == ACTION_TIMER_FINISHED) {
+                // Handle the timer finished event here
+                showNotification()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +69,7 @@ class TimerActivity : AppCompatActivity() {
         mButtonReset = findViewById(R.id.button_reset)
 
         mButtonSet?.setOnClickListener(View.OnClickListener {
-            val input = mEditTextInput?.getText().toString()
+            val input = mEditTextInput?.text.toString()
             if (input.isEmpty()) {
                 Toast.makeText(this@TimerActivity, "Field can't be empty", Toast.LENGTH_SHORT).show()
                 return@OnClickListener
@@ -78,6 +100,31 @@ class TimerActivity : AppCompatActivity() {
         binding.imageButton5.setOnClickListener {
             finish()
         }
+        createNotificationChannel()
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val notificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val filter = IntentFilter(ACTION_TIMER_FINISHED)
+        registerReceiver(timerReceiver, filter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(timerReceiver)
     }
 
     private fun setTime(milliseconds: Long) {
@@ -97,10 +144,24 @@ class TimerActivity : AppCompatActivity() {
             override fun onFinish() {
                 mTimerRunning = false
                 updateWatchInterface()
+                showNotification()
             }
         }.start()
         mTimerRunning = true
         updateWatchInterface()
+    }
+
+    private fun showNotification() {
+        val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.sand_clock)
+            .setContentTitle("Timer Expired")
+            .setContentText("Your timer has finished.")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build())
     }
 
     private fun pauseTimer() {
@@ -163,7 +224,6 @@ class TimerActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
-
     override fun onStop() {
         super.onStop()
         val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
@@ -173,9 +233,6 @@ class TimerActivity : AppCompatActivity() {
         editor.putBoolean("timerRunning", mTimerRunning)
         editor.putLong("endTime", mEndTime)
         editor.apply()
-        if (mCountDownTimer != null) {
-            mCountDownTimer!!.cancel()
-        }
     }
 
     override fun onStart() {
@@ -192,11 +249,13 @@ class TimerActivity : AppCompatActivity() {
             if (mTimeLeftInMillis < 0) {
                 mTimeLeftInMillis = 0
                 mTimerRunning = false
-                updateCountDownText()
-                updateWatchInterface()
-            } else {
+            }
+            updateCountDownText()
+            updateWatchInterface()
+            if (mTimeLeftInMillis > 0) {
                 startTimer()
             }
         }
     }
+
 }
