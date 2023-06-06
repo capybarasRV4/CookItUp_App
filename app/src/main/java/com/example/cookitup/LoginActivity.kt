@@ -8,9 +8,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cookitup.databinding.ActivityAllRecipesBinding
+import com.example.cookitup.databinding.ActivityLoginBinding
+import com.example.cookitup.databinding.ActivityProfileMainBinding
 
 
 class LoginActivity : AppCompatActivity() {
+
+    lateinit var app: MyApplication
+    private lateinit var binding: ActivityLoginBinding
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var usernameInput: EditText
@@ -18,7 +25,10 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        app = application as MyApplication
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
@@ -48,5 +58,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
+        binding.btnHome.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }

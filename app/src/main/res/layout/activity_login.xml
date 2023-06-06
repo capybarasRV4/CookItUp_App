@@ -61,6 +61,18 @@
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btn_home"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/windowSplashScreenBackground"
+        android:scaleType="fitEnd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/homes_icon" />
+
     <TextView
         android:id="@+id/text_password"
         android:layout_width="wrap_content"

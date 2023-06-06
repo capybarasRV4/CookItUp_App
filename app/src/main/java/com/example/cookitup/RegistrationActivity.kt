@@ -1,14 +1,21 @@
 package com.example.cookitup
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cookitup.databinding.ActivityAllRecipesBinding
+import com.example.cookitup.databinding.ActivityProfileMainBinding
+import com.example.cookitup.databinding.ActivityRegistrationBinding
 
 class RegistrationActivity : AppCompatActivity() {
+    lateinit var app: MyApplication
+    private lateinit var binding: ActivityRegistrationBinding
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var usernameInput: EditText
@@ -17,7 +24,10 @@ class RegistrationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        app = application as MyApplication
+        binding = ActivityRegistrationBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
@@ -40,6 +50,10 @@ class RegistrationActivity : AppCompatActivity() {
 
             Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
             finish()
+        }
+        binding.btnHome.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

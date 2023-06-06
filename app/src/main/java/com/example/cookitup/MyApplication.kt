@@ -35,7 +35,7 @@ class MyApplication: Application() {
     val CUSTOM_THEME = "customTheme"
     val LIGHT_THEME = "lightTheme"
     val DARK_THEME = "darkTheme"
-    val SERVER_URL = "http://192.168.1.5:3000/recipes"
+    val SERVER_URL = "http://172.20.10.2:3000/recipes"
 
 
     private var customTheme: String? = null
@@ -53,8 +53,8 @@ class MyApplication: Application() {
         gson = Gson()
         file = File(filesDir, MY_FILE_NAME)
 
-        //initDataDB()
-        initData()
+        initDataDB()
+        //initData()
         initShared()
         if (!containsID()) {
             saveID(UUID.randomUUID().toString().replace("-", ""))

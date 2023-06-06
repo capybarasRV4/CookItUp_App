@@ -34,7 +34,14 @@ class RecipeAdapter(var recipes:MutableList<Recipe>) : RecyclerView.Adapter<Reci
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipes = recipes[position]
 
-        Picasso.get().load("https://icons.iconarchive.com/icons/iconarchive/fat-sugar-food/256/Pizza-icon.png").into(holder.imageView)
+        if (recipes.name.contains("pica") || recipes.name.contains("pizza") || recipes.name.contains("pice") || recipes.name.contains("pizze")) {
+            Picasso.get().load("https://icons.iconarchive.com/icons/iconarchive/fat-sugar-food/512/Pizza-icon.png").into(holder.imageView)
+        } else if (recipes.name.contains("kruh")) {
+            Picasso.get().load("https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/512/32371-bread-icon.png").into(holder.imageView)
+        }
+        else {
+            Picasso.get().load("https://icons.iconarchive.com/icons/aniket-suvarna/box-regular/512/bx-dish-icon.png").into(holder.imageView)
+        }
 
         holder.name.text = recipes.name
         holder.prep.text = "Cas priprave: " + recipes.time
